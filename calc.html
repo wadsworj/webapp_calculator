@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<HTML>
+<head>
+
+    <title>Web Calculator</title>
+
+    <style>
+    #calc {
+        margin-top: 10px;
+    }
+    textarea {
+
+        text-align: right;
+        resize: none;
+        width: 400px;
+        font-size: 50px;
+    }
+    button {
+        background-color: #4CAF50; /* Green */
+        border: solid;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        width: 100px;
+    }
+    #zero {
+        width: 204px;
+    }
+
+    </style>
+
+    <script type="text/javascript">
+
+    var sum;
+
+    function negative()
+    {
+        value = document.getElementById("display").value;
+        document.getElementById("display").value = 0 - value;
+
+    }
+
+    function back()
+    {
+        var str = document.getElementById("display").value;
+        str = str.substring(0, str.length - 1);
+        document.getElementById("display").value = str;
+//
+        // test if empty
+        if (document.getElementById("display").value == "")
+        {
+            document.getElementById("display").value = 0;
+        }
+    }
+
+    function clear_calc()
+    {
+        document.getElementById("display").value = 0;
+        document.getElementById("sum").value = 0;
+    }
+
+    function button(value)
+    {
+        if (document.getElementById("display").value == 0)
+        {
+            document.getElementById("display").value = value;
+        }
+        else
+        {
+            value = document.getElementById("display").value + value;
+            document.getElementById("display").value = value;
+        }
+    }
+
+    function add()
+    {
+        if (document.getElementById("sum").value == "")
+        {
+            sum = document.getElementById("display").value;
+        }
+        else
+        {
+            sum = parseFloat(document.getElementById("display").value) + parseFloat(document.getElementById("sum").value);
+        }
+
+        document.getElementById("sum").value = sum;
+
+        document.getElementById("display").value = "";
+    }
+
+    </script>
+
+</head>
+<body>
+<div align="center" id="calc">
+
+    <!-- Text Area -->
+    <textarea rows="1" id="display">0</textarea><br>
+
+    <!-- Number Pad -->
+    <button onclick="clear_calc()" value="c">C</button>
+    <button onclick="back()" value="b">&#8592;</button>
+    <button onclick="negative()" value="+/-">+/-</button>
+    <button onclick="divide()" value="/">&#247;</button>
+
+    <br>
+
+    <button onclick="button(this.value)" value="7">7</button>
+    <button onclick="button(this.value)" value="8">8</button>
+    <button onclick="button(this.value)" value="9">9</button>
+
+    <button onclick="divide()" value="*">*</button>
+
+    <br>
+
+    <button onclick="button(this.value)" value="4">4</button>
+    <button onclick="button(this.value)" value="5">5</button>
+    <button onclick="button(this.value)" value="6">6</button>
+
+    <button onclick="divide()" value="-">-</button>
+
+    <br>
+
+    <button onclick="button(this.value)" value="1">1</button>
+    <button onclick="button(this.value)" value="2">2</button>
+    <button onclick="button(this.value)" value="3">3</button>
+
+    <button onclick="add()" value="+">+</button>
+
+    <br>
+
+    <button onclick="button(this.value)" value="0" id="zero">0</button>
+
+    <button onclick="button(this.value)" value=".">.</button>
+
+    <button onclick="divide()" value="=">=</button>
+
+</div>
+</body>
+
+</HTML>
